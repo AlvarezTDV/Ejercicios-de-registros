@@ -12,6 +12,26 @@ struct contactoEmail {
 	char nacionalidad;
 };
 
+//FUNCION SWITCH PARA EL MENU DE OPCIONES
+void programa( int decision, bool &bucle ) {
+	switch ( decision ) {
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			bucle = true;
+			break;
+		default:
+			cout << "Ingreso un numero invalido" << endl;
+			break;
+	}
+}
+
 int main() {
 	int decision;
 	bool bucle = false;
@@ -23,6 +43,8 @@ int main() {
 		cout << "4) Mostrar contactos existentes, ordenado por servidor de correo" << endl;
 		cout << "5) Salir del programa" << endl;
 		cin >> decision;
+		programa( decision, bucle );
 	} while ( bucle != true );
+	
 	return 0;
 }
