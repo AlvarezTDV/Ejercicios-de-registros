@@ -209,6 +209,16 @@ void listarVentas() {
     }
 }
 
+//FUNCION PARA CALCULAR EL TOTAL DE VENTAS
+void calcularTotalVentas() {
+    float total = 0;
+    for (int i = 0; i < numVentas; i++) {
+        total += historialVentas[i].precioTotal;
+    }
+    cout << "\n=== TOTAL DE VENTAS REALIZADAS ===" << endl;
+    cout << "Total: $" << total << endl;
+}
+
 int main() {
     char opcion;
     do {
@@ -236,6 +246,7 @@ int main() {
             	listarVentas();
                 break;
             case 'H':
+            	calcularTotalVentas();
                 break;
             case 'S':
                 cout << "Saliendo del programa." << endl;
