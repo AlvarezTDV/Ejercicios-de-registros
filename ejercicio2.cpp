@@ -60,6 +60,21 @@ void registrarProducto() {
     }
 }
 
+// FUNCION PARA LISTAR LOS PRODUCTOS REGISTRADOS
+void listarProductos() {
+    if (numProductos == 0) {
+        cout << "No hay productos registrados." << endl;
+    } else {
+        cout << "\n=== LISTA DE PRODUCTOS ===" << endl;
+        for (int i = 0; i < numProductos; i++) {
+            cout << "Producto " << i + 1 << ": " << endl;
+            cout << "Nombre: " << inventario[i].nombre << endl;
+            cout << "Precio: $" << inventario[i].precio << endl;
+            cout << "------------------------" << endl;
+        }
+    }
+}
+
 int main() {
     char opcion;
     do {
@@ -69,6 +84,7 @@ int main() {
             	registrarProducto();
                 break;
             case 'B':
+            	listarProductos();
                 break;
             case 'C':
                 break;
