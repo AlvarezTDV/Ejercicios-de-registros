@@ -151,6 +151,47 @@ void eliminarProducto() {
     }
 }
 
+// FUNCION PARA REGISTRAR UNA VENTA
+void registrarVenta() {
+    if (numProductos == 0) {
+        cout << "No hay productos registrados para realizar ventas." << endl;
+        return;
+    }
+
+    if (numVentas < MAX_VENTAS) {
+        cout << "\n=== REGISTRAR NUEVA VENTA ===" << endl;
+        historialVentas[numVentas].idVenta = numVentas + 1;
+
+        cout << "Productos disponibles: " << endl;
+        for (int i = 0; i < numProductos; i++) {
+            cout << i + 1 << ". " << inventario[i].nombre << " ($" << inventario[i].precio << ")" << endl;
+        }
+
+        cout << "Ingrese el numero del producto a vender: ";
+        int indiceProducto;
+        cin >> indiceProducto;
+        cin.ignore();
+
+        if (indiceProducto < 1 || indiceProducto > numProductos) {
+            cout << "Numero de producto inválido." << endl;
+            return;
+        }
+
+        historialVentas[numVentas].producto = inventario[indiceProducto - 1].nombre;
+
+        cout << "Ingrese la cantidad vendida: ";
+        cin >> historialVentas[numVentas].cantidad;
+        cin.ignore();
+
+        historialVentas[numVentas].precioTotal = historialVentas[numVentas].cantidad * inventario[indiceProducto - 1].precio;
+
+        numVentas++;
+        cout << "Venta registrada exitosamente." << endl;
+    } else {
+        cout << "No es posible registrar mas ventas. Limite alcanzado." << endl;
+    }
+}
+
 int main() {
     char opcion;
     do {
@@ -172,6 +213,7 @@ int main() {
             	eliminarProducto();
                 break;
             case 'F':
+            	registrarVenta();
                 break;
             case 'G':
                 break;
