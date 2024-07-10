@@ -42,12 +42,31 @@ char mostrarMenu() {
     return toupper(opcion);
 }
 
+// FUNCION PARA REGISTRAR NUEVO PRODUCTO
+void registrarProducto() {
+    if (numProductos < MAX_PRODUCTOS) {
+        cout << "\n=== REGISTRAR NUEVO PRODUCTO ===" << endl;
+        cout << "Ingrese el nombre del producto: ";
+        getline(cin, inventario[numProductos].nombre);
+
+        cout << "Ingrese el precio del producto: ";
+        cin >> inventario[numProductos].precio;
+        cin.ignore();
+
+        numProductos++;
+        cout << "Producto registrado exitosamente." << endl;
+    } else {
+        cout << "No es posible registrar más productos. Límite alcanzado." << endl;
+    }
+}
+
 int main() {
     char opcion;
     do {
         opcion = mostrarMenu();
         switch (opcion) {
             case 'A':
+            	registrarProducto();
                 break;
             case 'B':
                 break;
