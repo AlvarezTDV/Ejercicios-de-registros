@@ -87,6 +87,45 @@ void mostrarContactos(contactoEmail contactos[], int contadorContactos) {
     }
 }
 
+// FUNCIÓN PARA EXTRAER EL DOMINIO DEL CORREO
+string extraerDominio(const string &email) {
+    size_t pos = email.find('@');
+    if (pos != string::npos) {
+        return email.substr(pos + 1);
+    }
+    return "";
+}
+
+// FUNCIÓN MOSTRAR CONTACTOS ORDENADOS POR DOMINIO
+void mostrarContactosOrdenadosPorDominio(contactoEmail contactos[], int contadorContactos) {
+    if (contadorContactos == 0) {
+        cout << "No hay contactos registrados." << endl;
+        return;
+    }
+
+    for (int i = 0; i < contadorContactos - 1; i++) {
+        for (int j = 0; j < contadorContactos - i - 1; j++) {
+            if (extraerDominio(contactos[j].email) > extraerDominio(contactos[j + 1].email)) {
+                contactoEmail temp = contactos[j];
+                contactos[j] = contactos[j + 1];
+                contactos[j + 1] = temp;
+            }
+        }
+    }
+
+    for (int i = 0; i < contadorContactos; i++) {
+        cout << "// CONTACTO Nro: " << i + 1 << " //" << endl;
+        cout << "Nombres completos: " << contactos[i].nombresCompletos << endl;
+        cout << "Género: " << contactos[i].sexo << endl;
+        cout << "Edad: " << contactos[i].edad << endl;
+        cout << "Teléfono: " << contactos[i].telefono << endl;
+        cout << "Email: " << contactos[i].email << endl;
+        cout << "Nacionalidad: " << contactos[i].nacionalidad << endl;
+        cout << "Dominio: " << extraerDominio(contactos[i].email) << endl;
+        cout << "------------------------" << endl;
+    }
+}
+
 // FUNCIÓN SWITCH PARA EL MENÚ DE OPCIONES
 void programa(int decision, bool &bucle, contactoEmail contactos[], int &contadorContactos) {
     switch (decision) {
@@ -100,6 +139,7 @@ void programa(int decision, bool &bucle, contactoEmail contactos[], int &contado
         	mostrarContactos(contactos, contadorContactos);
             break;
         case 4:
+        	mostrarContactosOrdenadosPorDominio(contactos, contadorContactos);
             break;
         case 5:
             bucle = true;
