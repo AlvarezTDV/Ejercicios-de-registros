@@ -50,11 +50,11 @@ void eliminarContacto(contactoEmail contactos[], int &contadorContactos) {
     }
 
     int indice;
-    cout << "Ingrese el número del contacto que desea eliminar (1-" << contadorContactos << "): ";
+    cout << "Ingrese el numero del contacto que desea eliminar (1-" << contadorContactos << "): ";
     cin >> indice;
 
     if (indice < 1 || indice > contadorContactos) {
-        cout << "Número de contacto inválido." << endl;
+        cout << "Numero de contacto inválido." << endl;
         return;
     }
 
@@ -68,6 +68,25 @@ void eliminarContacto(contactoEmail contactos[], int &contadorContactos) {
     cout << "Contacto eliminado exitosamente." << endl;
 }
 
+// FUNCIÓN MOSTRAR CONTACTOS
+void mostrarContactos(contactoEmail contactos[], int contadorContactos) {
+    if (contadorContactos == 0) {
+        cout << "No hay contactos registrados." << endl;
+        return;
+    }
+
+    for (int i = 0; i < contadorContactos; i++) {
+        cout << "// CONTACTO Nro: " << i + 1 << " //" << endl;
+        cout << "Nombres completos: " << contactos[i].nombresCompletos << endl;
+        cout << "Género: " << contactos[i].sexo << endl;
+        cout << "Edad: " << contactos[i].edad << endl;
+        cout << "Teléfono: " << contactos[i].telefono << endl;
+        cout << "Email: " << contactos[i].email << endl;
+        cout << "Nacionalidad: " << contactos[i].nacionalidad << endl;
+        cout << "------------------------" << endl;
+    }
+}
+
 // FUNCIÓN SWITCH PARA EL MENÚ DE OPCIONES
 void programa(int decision, bool &bucle, contactoEmail contactos[], int &contadorContactos) {
     switch (decision) {
@@ -78,6 +97,7 @@ void programa(int decision, bool &bucle, contactoEmail contactos[], int &contado
         	eliminarContacto(contactos, contadorContactos);
             break;
         case 3:
+        	mostrarContactos(contactos, contadorContactos);
             break;
         case 4:
             break;
