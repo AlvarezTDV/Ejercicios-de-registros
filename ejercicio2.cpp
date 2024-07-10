@@ -98,6 +98,34 @@ void buscarProducto() {
     }
 }
 
+// FUNCION PARA ACTUALIZAR LOS DATOS DE UN PRODUCTO
+void actualizarProducto() {
+    string nombreActualizar;
+    cout << "\n=== ACTUALIZAR PRODUCTO ===" << endl;
+    cout << "Ingrese el nombre del producto a actualizar: ";
+    getline(cin, nombreActualizar);
+
+    bool encontrado = false;
+    for (int i = 0; i < numProductos; i++) {
+        if (inventario[i].nombre == nombreActualizar) {
+            cout << "Ingrese el nuevo nombre del producto: ";
+            getline(cin, inventario[i].nombre);
+
+            cout << "Ingrese el nuevo precio del producto: ";
+            cin >> inventario[i].precio;
+            cin.ignore();
+
+            cout << "Producto actualizado exitosamente." << endl;
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "Producto no encontrado." << endl;
+    }
+}
+
 int main() {
     char opcion;
     do {
@@ -113,6 +141,7 @@ int main() {
             	buscarProducto();
                 break;
             case 'D':
+            	actualizarProducto();
                 break;
             case 'E':
                 break;
