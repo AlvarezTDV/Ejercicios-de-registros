@@ -5,17 +5,48 @@ using namespace std;
 //SE CREA EL REGISTRO "contactoEmail"
 struct contactoEmail {
 	string nombresCompletos;
-	bool sexo;
+	string sexo;
 	int edad;
-	char telefono;
+	string telefono;
 	string email;
-	char nacionalidad;
+	string nacionalidad;
 };
+
+//FUNCION AGREGAR UN CONTACTO
+void agregarContacto( int cantidadContactos ) {
+	contactoEmail contact[cantidadContactos];
+	
+	for( int i = 0; i < cantidadContactos; i++ ) {
+		cout << "// AGREGAR UN CONTACTO Nro: " << i + 1 << " //" << endl;
+		cout << "Ingrese nombres completos: ";
+		cin.ignore();
+		getline(cin, contact[i].nombresCompletos);
+		
+		cout << "Ingrese el genero: ";
+		cin >> contact[i].sexo;
+			
+		cout << "Ingrese la edad: ";
+		cin >> contact[i].edad;
+		
+		cout << "Ingrese el telefono: ";
+		cin >> contact[i].telefono;
+			
+		cout << "Ingrese el email: ";
+		cin >> contact[i].email;
+			
+		cout << "Ingrese la nacionalidad: ";
+		cin >> contact[i].nacionalidad;
+	}
+}
 
 //FUNCION SWITCH PARA EL MENU DE OPCIONES
 void programa( int decision, bool &bucle ) {
+	int cantidadContactos;
 	switch ( decision ) {
 		case 1:
+			cout << "Ingrese cuantos contactos desea agregar: ";
+			cin >> cantidadContactos;
+			agregarContacto( cantidadContactos );	
 			break;
 		case 2:
 			break;
