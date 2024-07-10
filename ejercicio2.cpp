@@ -22,7 +22,7 @@ const int MAX_VENTAS = 100;
 Venta historialVentas[MAX_VENTAS];
 int numVentas = 0;
 
-// FUNCION PARA MOSTRAR EL MENU
+//FUNCION PARA MOSTRAR EL MENU
 char mostrarMenu() {
     cout << "\n=== MENU ===" << endl;
     cout << "A: Registrar un nuevo producto." << endl;
@@ -42,7 +42,7 @@ char mostrarMenu() {
     return toupper(opcion);
 }
 
-// FUNCION PARA REGISTRAR NUEVO PRODUCTO
+//FUNCION PARA REGISTRAR NUEVO PRODUCTO
 void registrarProducto() {
     if (numProductos < MAX_PRODUCTOS) {
         cout << "\n=== REGISTRAR NUEVO PRODUCTO ===" << endl;
@@ -60,7 +60,7 @@ void registrarProducto() {
     }
 }
 
-// FUNCION PARA LISTAR LOS PRODUCTOS REGISTRADOS
+//FUNCION PARA LISTAR LOS PRODUCTOS REGISTRADOS
 void listarProductos() {
     if (numProductos == 0) {
         cout << "No hay productos registrados." << endl;
@@ -75,7 +75,7 @@ void listarProductos() {
     }
 }
 
-// FUNCION PARA BUSCAR UN PRODUCTO POR NOMBRE
+//FUNCION PARA BUSCAR UN PRODUCTO POR NOMBRE
 void buscarProducto() {
     string nombreBuscar;
     cout << "\n=== BUSCAR PRODUCTO ===" << endl;
@@ -98,7 +98,7 @@ void buscarProducto() {
     }
 }
 
-// FUNCION PARA ACTUALIZAR LOS DATOS DE UN PRODUCTO
+//FUNCION PARA ACTUALIZAR LOS DATOS DE UN PRODUCTO
 void actualizarProducto() {
     string nombreActualizar;
     cout << "\n=== ACTUALIZAR PRODUCTO ===" << endl;
@@ -126,7 +126,7 @@ void actualizarProducto() {
     }
 }
 
-// FUNCION PARA ELIMINAR UN PRODUCTO
+//FUNCION PARA ELIMINAR UN PRODUCTO
 void eliminarProducto() {
     string nombreEliminar;
     cout << "\n=== ELIMINAR PRODUCTO ===" << endl;
@@ -151,7 +151,7 @@ void eliminarProducto() {
     }
 }
 
-// FUNCION PARA REGISTRAR UNA VENTA
+//FUNCION PARA REGISTRAR UNA VENTA
 void registrarVenta() {
     if (numProductos == 0) {
         cout << "No hay productos registrados para realizar ventas." << endl;
@@ -192,6 +192,23 @@ void registrarVenta() {
     }
 }
 
+//FUNCION PARA LISTAR LAS VENTAS REALIZADAS
+void listarVentas() {
+    if (numVentas == 0) {
+        cout << "No hay ventas registradas." << endl;
+    } else {
+        cout << "\n=== LISTA DE VENTAS ===" << endl;
+        for (int i = 0; i < numVentas; i++) {
+            cout << "Venta " << i + 1 << ": " << endl;
+            cout << "ID de Venta: " << historialVentas[i].idVenta << endl;
+            cout << "Producto: " << historialVentas[i].producto << endl;
+            cout << "Cantidad: " << historialVentas[i].cantidad << endl;
+            cout << "Precio Total: $" << historialVentas[i].precioTotal << endl;
+            cout << "------------------------" << endl;
+        }
+    }
+}
+
 int main() {
     char opcion;
     do {
@@ -216,6 +233,7 @@ int main() {
             	registrarVenta();
                 break;
             case 'G':
+            	listarVentas();
                 break;
             case 'H':
                 break;
