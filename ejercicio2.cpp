@@ -126,6 +126,31 @@ void actualizarProducto() {
     }
 }
 
+// FUNCION PARA ELIMINAR UN PRODUCTO
+void eliminarProducto() {
+    string nombreEliminar;
+    cout << "\n=== ELIMINAR PRODUCTO ===" << endl;
+    cout << "Ingrese el nombre del producto a eliminar: ";
+    getline(cin, nombreEliminar);
+
+    bool encontrado = false;
+    for (int i = 0; i < numProductos; i++) {
+        if (inventario[i].nombre == nombreEliminar) {
+            for (int j = i; j < numProductos - 1; j++) {
+                inventario[j] = inventario[j + 1];
+            }
+            numProductos--;
+            cout << "Producto eliminado exitosamente." << endl;
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "Producto no encontrado." << endl;
+    }
+}
+
 int main() {
     char opcion;
     do {
@@ -144,6 +169,7 @@ int main() {
             	actualizarProducto();
                 break;
             case 'E':
+            	eliminarProducto();
                 break;
             case 'F':
                 break;
