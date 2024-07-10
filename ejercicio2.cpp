@@ -75,6 +75,29 @@ void listarProductos() {
     }
 }
 
+// FUNCION PARA BUSCAR UN PRODUCTO POR NOMBRE
+void buscarProducto() {
+    string nombreBuscar;
+    cout << "\n=== BUSCAR PRODUCTO ===" << endl;
+    cout << "Ingrese el nombre del producto a buscar: ";
+    getline(cin, nombreBuscar);
+
+    bool encontrado = false;
+    for (int i = 0; i < numProductos; i++) {
+        if (inventario[i].nombre == nombreBuscar) {
+            cout << "Producto encontrado:" << endl;
+            cout << "Nombre: " << inventario[i].nombre << endl;
+            cout << "Precio: $" << inventario[i].precio << endl;
+            encontrado = true;
+            break;
+        }
+    }
+
+    if (!encontrado) {
+        cout << "Producto no encontrado." << endl;
+    }
+}
+
 int main() {
     char opcion;
     do {
@@ -87,6 +110,7 @@ int main() {
             	listarProductos();
                 break;
             case 'C':
+            	buscarProducto();
                 break;
             case 'D':
                 break;
