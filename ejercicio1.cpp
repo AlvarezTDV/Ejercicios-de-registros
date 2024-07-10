@@ -42,6 +42,32 @@ void agregarContacto(contactoEmail contactos[], int &contadorContactos) {
     }
 }
 
+// FUNCIÓN ELIMINAR UN CONTACTO
+void eliminarContacto(contactoEmail contactos[], int &contadorContactos) {
+    if (contadorContactos == 0) {
+        cout << "No hay contactos para eliminar." << endl;
+        return;
+    }
+
+    int indice;
+    cout << "Ingrese el número del contacto que desea eliminar (1-" << contadorContactos << "): ";
+    cin >> indice;
+
+    if (indice < 1 || indice > contadorContactos) {
+        cout << "Número de contacto inválido." << endl;
+        return;
+    }
+
+    indice--;
+
+    for (int i = indice; i < contadorContactos - 1; i++) {
+        contactos[i] = contactos[i + 1];
+    }
+
+    contadorContactos--;
+    cout << "Contacto eliminado exitosamente." << endl;
+}
+
 // FUNCIÓN SWITCH PARA EL MENÚ DE OPCIONES
 void programa(int decision, bool &bucle, contactoEmail contactos[], int &contadorContactos) {
     switch (decision) {
@@ -49,6 +75,7 @@ void programa(int decision, bool &bucle, contactoEmail contactos[], int &contado
             agregarContacto(contactos, contadorContactos);
             break;
         case 2:
+        	eliminarContacto(contactos, contadorContactos);
             break;
         case 3:
             break;
@@ -67,7 +94,7 @@ int main() {
 	int decision;
     bool bucle = false;
     contactoEmail contactos[10];
-    int contadorContactos = 0; // Inicia el contador de contactos en 0
+    int contadorContactos = 0;
 
     do {
         cout << "1) Agregar un contacto" << endl;
